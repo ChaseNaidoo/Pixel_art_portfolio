@@ -1,5 +1,5 @@
 export const scaleFactor = 4;
-export const Co = {};
+const Co = {};
 
 export const dialogueData = {
   pc: `This is my PC. I work mostly in JavaScript/TypeScript these days.

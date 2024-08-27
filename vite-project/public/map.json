@@ -192,7 +192,7 @@
                 {
                  "height":13,
                  "id":30,
-                 "name":"alx-certificate",
+                 "name":"alx_certificate",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -384,7 +384,7 @@
                 {
                  "height":13,
                  "id":71,
-                 "name":"biotech-degree",
+                 "name":"biotech_degree",
                  "rotation":0,
                  "type":"",
                  "visible":true,

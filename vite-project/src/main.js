@@ -1,6 +1,6 @@
 import { dialogueData, scaleFactor } from "./constants";
 import { k } from "./kaboomCtx";
-import { displayDialogue, setCamScale } from "./utils";
+import { displayDialogue, setCamScale, displayChecklist, completeObjective} from "./utils";
 
 k.loadSprite("spritesheet", "./spritesheet.png", {
   sliceX: 39,
@@ -20,6 +20,7 @@ k.loadSprite("map", "./map.png");
 k.setBackground(k.Color.fromHex("#311047"));
 
 k.scene("main", async () => {
+  displayChecklist();
   const mapData = await (await fetch("./map.json")).json();
   const layers = mapData.layers;
 
@@ -80,6 +81,24 @@ k.scene("main", async () => {
         }
       }
     }
+  }
+  const objectiveHandlers = {
+    resume: () => {
+      completeObjective(1)
+    },
+    pc: () => {
+      completeObjective(2);
+    },
+    alx_certificate: () => {
+      completeObjective(3)
+    },
+    biotech_degree: () => {
+      completeObjective(4)
+    }
+  };
+
+  for (const [tag, handler] of Object.entries(objectiveHandlers)) {
+    player.onCollide(tag, handler);
   }
 
   setCamScale(k);

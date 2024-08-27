@@ -43,3 +43,50 @@ export function setCamScale(k) {
     k.camScale(k.vec2(1.5));
   }
 }
+
+import { objectives } from "./constants";
+import { k } from "./kaboomCtx";
+
+export function displayChecklist() {
+  k.add([
+    k.rect(220, objectives.length * 24 + 20),
+    k.pos(k.width() - 240, 20),
+    k.color(0, 0, 0, 0.8),
+    k.z(10),
+    k.fixed(),
+  ]);
+
+  objectives.forEach((objective, index) => {
+    const color = objective.completed ? k.Color.GREEN : k.Color.WHITE;
+    k.add([
+      k.text(objective.description, { size: 16 }),
+      k.pos(k.width() - 230, 30 + index * 24),
+      k.color(color),
+      k.z(11),
+      k.fixed(),
+    ]);
+  });
+}
+
+export function completeObjective(index) {
+  if (objectives[index] && !objectives[index].completed) {
+    objectives[index].completed = true;
+    displayChecklist();
+    showNotification(`${objectives[index].description} completed!`);
+  }
+}
+
+export function showNotification(message) {
+  const notification = k.add([
+    k.text(message, { size: 16 }),
+    k.z(13),
+    k.lifespan(2, { fade: 0.5 }),
+  ]);
+
+  const fontSize = 16;
+  const textWidth = message.length * fontSize * 0.6;
+  const textHeight = fontSize;
+
+  notification.pos = k.vec2(k.width() / 2 - textWidth / 2, k.height() / 2 - textHeight / 2);
+}
+

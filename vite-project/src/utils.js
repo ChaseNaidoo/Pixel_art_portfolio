@@ -55,7 +55,7 @@ export function displayChecklist() {
     k.pos(k.width() - 310, 20),
     k.color(0, 0, 0),
     k.opacity(0.3),
-    k.z(10),
+    k.z(1),
     k.fixed(),
   ]);
 

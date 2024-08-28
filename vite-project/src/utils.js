@@ -47,11 +47,14 @@ export function setCamScale(k) {
 import { objectives } from "./constants";
 import { k } from "./kaboomCtx";
 
+k.loadFont("monogram", "monogram.ttf");
+
 export function displayChecklist() {
   k.add([
-    k.rect(220, objectives.length * 24 + 20),
-    k.pos(k.width() - 240, 20),
-    k.color(0, 0, 0, 0.8),
+    k.rect(300, objectives.length * 24 + 20),
+    k.pos(k.width() - 310, 20),
+    k.color(0, 0, 0),
+    k.opacity(0.3),
     k.z(10),
     k.fixed(),
   ]);
@@ -59,8 +62,8 @@ export function displayChecklist() {
   objectives.forEach((objective, index) => {
     const color = objective.completed ? k.Color.GREEN : k.Color.WHITE;
     k.add([
-      k.text(objective.description, { size: 16 }),
-      k.pos(k.width() - 230, 30 + index * 24),
+      k.text(objective.description, { size: 25, font: "monogram" }),
+      k.pos(k.width() - 290, 30 + index * 24),
       k.color(color),
       k.z(11),
       k.fixed(),
@@ -77,16 +80,39 @@ export function completeObjective(index) {
 }
 
 export function showNotification(message) {
+  const checklistY = 20;
+  const checklistHeight = objectives.length * 24 + 20;
+  const maxWidth = 490;
+  const notificationY = checklistY + checklistHeight + 10;
+  const wrappedText = wrapText(message, maxWidth, 25);
   const notification = k.add([
-    k.text(message, { size: 16 }),
+    k.text(wrappedText, { size: 25, font: "monogram", width: maxWidth }),
+    k.color(57, 255, 20),
+    k.pos(k.width() - 290, notificationY),
     k.z(13),
-    k.lifespan(2, { fade: 0.5 }),
+    k.lifespan(2, { fade: 1 }),
+    k.fixed(),
   ]);
+}
 
-  const fontSize = 16;
-  const textWidth = message.length * fontSize * 0.6;
-  const textHeight = fontSize;
+function wrapText(text, maxWidth, fontSize) {
+  const words = text.split(" ");
+  let lines = [];
+  let currentLine = "";
 
-  notification.pos = k.vec2(k.width() / 2 - textWidth / 2, k.height() / 2 - textHeight / 2);
+  words.forEach((word) => {
+    const testLine = currentLine + word + " ";
+    const testWidth = testLine.length * fontSize * 0.6;
+
+    if (testWidth > maxWidth) {
+      lines.push(currentLine.trim());
+      currentLine = word + " ";
+    } else {
+      currentLine = testLine;
+    }
+  });
+
+  lines.push(currentLine.trim());
+  return lines.join("\n");
 }
 

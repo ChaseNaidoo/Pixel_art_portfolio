@@ -84,16 +84,16 @@ k.scene("main", async () => {
   }
   const objectiveHandlers = {
     resume: () => {
-      completeObjective(1)
+      completeObjective(1, player)
     },
     pc: () => {
-      completeObjective(2);
+      completeObjective(2, player);
     },
     alx_certificate: () => {
-      completeObjective(3)
+      completeObjective(3, player)
     },
     biotech_degree: () => {
-      completeObjective(4)
+      completeObjective(4, player)
     }
   };
 

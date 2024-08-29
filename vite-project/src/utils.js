@@ -44,10 +44,67 @@ export function setCamScale(k) {
   }
 }
 
-import { objectives } from "./constants";
+import { objectives, rewardTextContent } from "./constants";
 import { k } from "./kaboomCtx";
 
 k.loadFont("monogram", "monogram.ttf");
+
+function checkCompletion() {
+  if (objectives.every(obj => obj.completed)) {
+    showCompletionReward();
+  }
+}
+
+export function completeObjective(index) {
+  if (objectives[index] && !objectives[index].completed) {
+    objectives[index].completed = true;
+    displayChecklist();
+    showNotification(`${ objectives[index].description } completed!`);
+    checkCompletion();
+  }
+}
+
+// Function to display the completion reward
+function showCompletionReward() {
+  const wrappedText = wrapText(rewardTextContent, 450, 30);
+
+  const rewardText = k.add([
+    k.text( wrappedText, { size: 30, font: "monogram" }),
+    k.pos(k.width() - 290, 170),
+    k.color(255, 255, 255),
+    k.lifespan(30, { fade: 1 }),
+    k.fixed(),
+  ]);
+
+  function getRandomColor() {
+    return k.rgb(k.rand(0, 255), k.rand(0, 255), k.rand(0, 255));
+  }
+
+  // Change text color every 500ms
+  setInterval(() => {
+    rewardText.color = getRandomColor();
+  }, 500);
+
+// Add confetti at random positions
+for (let i = 0; i < 10; i++) {
+  const randomX = k.rand(0, k.width());
+  const randomY = k.rand(0, k.height());
+  createConfetti(randomX, randomY);
+  }
+}
+
+  // Add confetti
+  function createConfetti(x, y) {
+  for (let i = 0; i < 10; i++) {
+    k.add([
+      k.rect(4, 4),
+      k.pos(x, y),
+      k.color(k.rand(0, 255), k.rand(0, 255), k.rand(0, 255)),
+      k.move(k.rand(0, 360), k.rand(50, 100)),
+      k.lifespan(30, { fade: 1 }),
+    ]);
+  }
+}
 
 export function displayChecklist() {
   k.add([
@@ -60,23 +117,17 @@ export function displayChecklist() {
   ]);
 
   objectives.forEach((objective, index) => {
+    const checkbox = objective.completed ? "[x]" : "[ ]";
     const color = objective.completed ? k.Color.GREEN : k.Color.WHITE;
+    
     k.add([
-      k.text(objective.description, { size: 25, font: "monogram" }),
+      k.text(`${ checkbox } ${ objective.description }`, { size: 25, font: "monogram" }),
       k.pos(k.width() - 290, 30 + index * 24),
       k.color(color),
       k.z(11),
       k.fixed(),
     ]);
   });
-}
-
-export function completeObjective(index) {
-  if (objectives[index] && !objectives[index].completed) {
-    objectives[index].completed = true;
-    displayChecklist();
-    showNotification(`${objectives[index].description} completed!`);
-  }
 }
 
 export function showNotification(message) {
@@ -87,10 +138,10 @@ export function showNotification(message) {
   const wrappedText = wrapText(message, maxWidth, 25);
   const notification = k.add([
     k.text(wrappedText, { size: 25, font: "monogram", width: maxWidth }),
-    k.color(57, 255, 20),
+    k.color(44, 255, 5),
     k.pos(k.width() - 290, notificationY),
     k.z(13),
-    k.lifespan(2, { fade: 1 }),
+    k.lifespan(1, { fade: 1 }),
     k.fixed(),
   ]);
 }
@@ -115,4 +166,3 @@ function wrapText(text, maxWidth, fontSize) {
   lines.push(currentLine.trim());
   return lines.join("\n");
 }
-

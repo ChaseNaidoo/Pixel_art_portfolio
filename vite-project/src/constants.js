@@ -2,31 +2,25 @@ export const scaleFactor = 4;
 const Co = {};
 
 export const objectives = [
-  { description: "Explore", completed: true },
+  { description: "Explore the map", completed: true },
   { description: "Find my resume", completed: false },
   { description: "Checkout my PC", completed: false },
   { description: "Checkout my cerficate", completed: false },
   { description: "Take a look at my degree", completed: false}
 ];
 
+export const rewardTextContent = "Congratulations! All objectives completed! Thank you for visiting my portfolio!";
+
 export const dialogueData = {
-  pc: `This is my PC. I work mostly in JavaScript/TypeScript these days.
-    I've made a couple of games in that language. I also like Golang and Python. Anyway regardless of the language, I just like programming.
-    Here is my <a href="https://github.com/ChaseNaidoo" target="_blank">Github</a>!`,
-  "alx_certificate": `This is my Certificate in Full-Stack Software Engineering from ALX Africa.`,
-  "biotech_degree": 'National Diploma in Biotechnology from Tshwane University of Technology',
-  "sofa-table": `That's my sofa. I like to relax here and watch YouTube. 
-  I also make game programming tutorials on YouTube. Go sub to <a href="https://youtube.com/@jslegenddev" target="_blank">my channel</a>! (If you like the content)
-  You'll learn how I built this portfolio you're currently playing through!`,
-  tv: `That's my TV. I've been watching tech youtubers a lot recently like :
-   <a href="https://www.youtube.com/@ThePrimeTimeagen" target="_blank">Theprimeagen</a>, <a href="https://www.youtube.com/@t3dotgg" target="_blank">Theo - t3.gg</a>,
-  <a href="https://www.youtube.com/@PirateSoftware" target="_blank">PirateSoftware</a> (sometimes) and <a href="https://www.youtube.com/@MelkeyDev" target="_blank">Melkey</a>!`,
+  pc: `This is my PC where I do most of my programming. My tech stack includes HTML, CSS, JavaScript, Python and React. Feel free to explore my <a href="https://github.com/ChaseNaidoo" target="_blank">Github</a> for a more in-depth look into my projects and experience.`,
+  "alx_certificate": `This is my Certificate in Full-Stack Software Engineering from ALX Africa. I graduated with a specialization in Front-End Development.`,
+  "biotech_degree": 'This is my degree, a National Diploma in Biotechnology from Tshwane University of Technology.',
+  tv: `This is my TV. I occassionally enjoy a movie so bad that it is good. I also watch a few tech youtubers such as :
+  <a href="https://www.youtube.com/@juxtopposed" target="_blank">Juxtopposed</a>, <a href="https://www.youtube.com/@Fireship" target="_blank">Fireship</a>,
+  <a href="https://www.youtube.com/@GMTK" target="_blank">Game Maker's Toolkit</a> and <a href="https://youtube.com/@jslegenddev" target="_blank">JSLegendDev</a> who inspired this project.`,
   resume: `This is my desk and on it is my resume. <a href="https://github.com/ChaseNaidoo/Portfolio-Website/raw/main/img/Resume%20of%20Cameron%20Chase%20Naidoo.pdf" target="_blank">Check it out?</a>
-  Contact me at jslegend@protonmail.com if you have any interesting job opportunities!`,
-  projects: `Info about this portfolio : It's made with the Kaboom.js library which is a library for making games in JavaScript.
-  Text is rendered with HTML/CSS. So the textbox you're currently reading is not rendered within canvas. Learn more about how to use
-  Kaboom.js by watching some of my tutorials <a href="https://youtube.com/@jslegenddev" target="_blank">here</a>.`,
-  library: `There are a lot of programming books on my shelves. There is even one in French (I also speak French btw).
-  I probably only read one of them. Who else compulsively buys technical books without ever finishing them?`,
-  exit: `If you want to exit JSLegendDev's portfolio, just close the tab.`,
+  Contact me at chasenaidoo9@gmail.com if you have any interesting job opportunities or just want to chat.`,
+  projects: `I have worked on various projects that showcased my expertise, ranging from aesthetically pleasing websites to AI-powered applications that aim to solve real-world problems. One of the more notable projects that I led was <a href="https://github.com/ChaseNaidoo/PocketDerma" target="_blank">PocketDerma</a>, which utilized artificial intelligence to detect skin disease from an image uploaded by the user.`,
+  library: `I believe the most valuable skill anyone could have is the ability to learn how to learn. Adapatability, curiousity and creativity are my greatest strengths and that has allowed me to continously learn and be better than the person who I was yesterday.`,
+  exit: `If you want to exit the portfolio, just close the tab.`,
 };

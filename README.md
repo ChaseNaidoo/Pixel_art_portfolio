@@ -1,6 +1,7 @@
 ## Overview
 A top-down interactive personal portfolio in the style of retro pixel games such as Pokemon, Legend of Zelda and Super Mario.
 This interactive portfolio project serves as a showcase of my web development and design skills. Built using **Kaboom.js**, a powerful JavaScript framework for creating 2D games, this portfolio allows users to engage with my projects in a playful and immersive way. It features various interactive elements, including a dynamic checklist for tracking objectives, a dialogue system for delivering engaging content, and visual rewards for completed tasks.
+![Screenshot 2024-09-02 143330](https://github.com/user-attachments/assets/ea48905f-5c6a-4014-9a48-ac00372c03f4)
 
 ## Table of Contents
 - [Features](#features)
@@ -37,5 +38,3 @@ To run this project locally, follow these steps:
 - Alternatively, you may use the keyboard arrows to move the character around.
 - Interact with different objects to complete the objectives and explore the world.
 - To exit, simply close the tab.
-
-![Screenshot 2024-09-02 143330](https://github.com/user-attachments/assets/ea48905f-5c6a-4014-9a48-ac00372c03f4)

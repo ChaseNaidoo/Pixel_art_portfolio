@@ -30,8 +30,7 @@ To run this project locally, follow these steps:
 2. Type in the console:
    ```bash
    npm run dev
-3. Or, alternatively visit:
-   [Click Here](https://pixel-art-portfolio.vercel.app/)
+3. Or, alternatively [click here](https://pixel-art-portfolio.vercel.app/) to visit the deployed website.
 
 ## How to play
 - Tap/click in desired direction to move character.
